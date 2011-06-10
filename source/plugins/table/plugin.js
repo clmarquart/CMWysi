@@ -23,10 +23,9 @@
                                         tip:"Insert Table",
                                         bgPos:"-200px -18px",
                                         message : {
-                                            html:"Rows: <input type='text' name='rows' value='' /><br />"+
-                                                 "Columns: <input type='text' name='cols' value='' /><br />"+
-                                                 "Header Row: <input type='checkbox' name='th' value='1' />" },
-                                        //callback : this._insertTable
+                                            html:"<div class='row'>Rows: <input type='text' name='rows' value='' /></div>"+
+                                                 "<div class='row'>Columns: <input type='text' name='cols' value='' /></div>"+
+                                                 "<div class='row'>Header Row: <input type='checkbox' name='th' value='1' /></div>" },
                                         callback : "wysiwyg.packages.table._insertTable"
                                       },ed);
 

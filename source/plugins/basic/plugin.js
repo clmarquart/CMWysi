@@ -24,7 +24,6 @@
                                          "icon":"",
                                          "class":"sprite",
                                          "css":"background-position:-30px 0px"
-//                                         func:this._bold
                                          },ed);
             break;
           case "italic":
@@ -32,7 +31,6 @@
                                          "icon":"",
                                          "class":"sprite",
                                          "css":"background-position:-45px 0px"
-//                                         func:this._italic
                                          },ed);
             break;
           case "underline":
@@ -106,8 +104,8 @@
                                      title:"Add a link",
                                      bgPos:"-111px 0px",
                                      message:{
-                                      html:"Text: <input type='text' name='text' value='' /><br />"+
-                                           "Link: <input type='text' name='link' value='' />" },
+                                      html:"<div class='row'>Text: <input type='text' name='text' value='' /></div>"+
+                                           "<div class='row'>Link: <input type='text' name='link' value='' /></div>" },
                                       callback:"wysiwyg.packages.basic.insertLink",
                                       dynamicContent:"wysiwyg.packages.basic.dynamicContent"
                                      },ed);
