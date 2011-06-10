@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <link href="/build/demo/css/main.css" type="text/css" rel="stylesheet" />
+  <link href="/build/cmwysi/jquery.cmwysi.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="/tests/qunit/qunit.css" type="text/css" media="screen" />
+</head>
+<body>
+  <div style="float:left;width:40%;">
+    <h1 id="qunit-header">CMWysi Tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <h2 id="qunit-nav">
+      <span><a href="?loaded">Loaded</a></span>
+      <span><a href="?plugins">Plugins</a></span>
+      <span><a href="?controls">Controls</a></span>
+      <span><a href="?">All</a></span>
+    </h2>
+    <h2 id="qunit-userAgent"></h2>
+    <ol id="qunit-tests"></ol>
+  </div>
+  <textarea id='cmwysi2' name='cmwysi2' rows='10' cols='70'>
+    &lt;span style="font-weight:bold;">This should be bold.&lt;/span>
+    &lt;br/>&lt;br/>&lt;span class="tested">This has style&lt;/span>
+  </textarea>
+
+  <script src="/tests/qunit/jquery-1.4.min.js" type="text/javascript"></script>
+  <script src="/build/demo/js/jqueryui.js" type="text/javascript"></script>
+  <script src="/build/cmwysi/jquery.cmwysi.js" type="text/javascript"></script>
+  <script src="/tests/qunit/qunit.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("textarea").cmwysi({
+        packages : "basic,format,images,table,style,autosave,context",
+        style : ["/build/demo/css/template.css"],
+        location : "/build/cmwysi",
+        callback : function(editor) {
+          runTests(editor);
+        }
+      });
+
+      test("Testing the Core Functions", function() {});
+      function runTests(editor){
+        //if(location.search==="") return;
+
+        var toolbar = $(".cmwysiFrame > .toolbar");
+        var statusbar = $(".cmwysiFrame > .statusbar");
+        module("loaded");
+        test("Editor exists.", function() {
+          var editors = $(".cmwysiFrame").length;
+          equals(editors,1,"Editor is loaded.");
+        });
+        test("Has Toolbar", function() {
+          var toolbar = $(".cmwysiFrame > .toolbar").length;
+          equals(toolbar,1,"Editor has toolbar.");
+        });
+        test("Has Statusbar", function() {
+          var statusbar = $(".cmwysiFrame > .statusbar").length;
+          equals(statusbar,1,"Editor has statusbar.");
+        });
+
+        module("controls");
+        test("Toolbar has controls", function(){
+          var packages = $(".cmwysiFrame > .toolbar > ul[class^='package-']").length;
+          ok((packages>0),"Toolbar has at least 1 package loaded.");
+        });
+        test("Show active toolbar icon.",function(){
+          $(wysiwyg.active.iframe[0].contentWindow.document)
+            .find("body")
+            .children(":eq(0)")
+            .trigger("click");
+          var active = $(".cmwysiFrame > .toolbar > .package-basic").has("#control-bold.active").length;
+          equals(active,1,"Bold is active.");
+        });
+
+        var wBody = $(wysiwyg.active.iframe[0].contentWindow.document).find("body");
+        module("plugins.style");
+        test("Style plugin",function(){
+          $(wBody).find("span[class='tested']").trigger("click");
+          var styled = $(wBody).find("span[class='tested']");
+          var drop = $(".cmwysiFrame > .toolbar #control-styleDrop");
+
+          equals(styled.length,1,"Class has been applied");
+          equals($(drop).find(".cm_menuTxt").text(),"tested","Style dropdown shows active class");
+        });
+
+        module("plugins.basic");
+        test("Create Anchor",function(){
+          $(wBody).children(":eq(0)").trigger("click");
+          $(statusbar).find(".pathlist li:eq(1)").trigger("click");
+          $(toolbar).find("span.createLink").trigger("click");
+          $("#dialog input:eq(1)").val("http://www.cmwysi.com");
+          $(".ui-dialog-buttonpane button:eq(0)").trigger("click");
+          ok($(wBody).children(":eq(0)")[0].nodeName === "A","First span is now a link.");
+
+          $(wBody).children(":eq(0)").trigger("click");
+          $(statusbar).find(".pathlist li:eq(1)").trigger("click");
+          $(toolbar).find("span.unlink").trigger("mousedown");
+          ok($(wBody).children(":eq(0)")[0].nodeName !== "A","First is no longer a link.");
+          $(wBody).children(":eq(0)").trigger("click");
+        });
+      }
+    });
+  </script>
+</body>
+</html>

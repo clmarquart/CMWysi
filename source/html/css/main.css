@@ -1,0 +1,24 @@
+#container {
+	float:left;
+	background: white;
+	padding:15px;
+	margin:15px;
+	text-align:center;
+	width:600px;
+	height: auto !important;
+}
+
+.cmwysiFrame {
+	float:left;
+	width:100%;
+}
+
+.cmwysiFrame body {
+	height:auto !important;
+	min-height:200px;
+	background: blue;
+}
+.dbgcntr { float:left;width:100%; }
+.second { background:blue }
+
+	
