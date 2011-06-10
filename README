@@ -1,0 +1,26 @@
+## Introduction
+
+This project is an attempt to create a powerful, lightweight framework for adding a pure JavaScript WYSIWYG editor to any page.
+
+
+## Key Features
+
+* jQuery Backbone for manipulating the editors and their contents.
+* NO Browser Detection
+* Built-in use of window.localStorage
+* Easily extended
+* More on Plugins...
+* More to come...
+
+## Quick Example
+
+//When ready, add the wysiwyg to the textareas
+$(document).ready(function() {
+  $("#cmwysi, #cmwysi2").cmwysi({#
+     packages : "basic,format,images,table,style,autosave,context",  
+  });
+});
+
+//Example of the html
+<textarea id="cmwysi">Some content.</textarea>
+<textarea id="cmwysi2">Some different stuff.</textarea>
