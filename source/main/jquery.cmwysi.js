@@ -862,14 +862,14 @@
       $(this.wysiDoc).bind("keydown.cmwysi",function(ev){
         switch (ev.keyCode.toString()){
           case "13":
-            try{
-              var newNode = document.createElement(wysiwyg.active.opts.linebreak);
-              wysiwyg.active.selection.replaceSelection(newNode);
-              // wysiwyg.active.selection.obj.extend(newNode,1);
-              // wysiwyg.active.selection.obj.collapseToEnd();
-              wysiwyg.active.selection.setSelection(ev);
-            } catch(e){}
-            return false;
+            // try{
+              // var newNode = document.createElement(wysiwyg.active.opts.linebreak);
+              // wysiwyg.active.selection.replaceSelection(newNode);
+              // // wysiwyg.active.selection.obj.extend(newNode,1);
+              // // wysiwyg.active.selection.obj.collapseToEnd();
+              // wysiwyg.active.selection.setSelection(ev);
+            // } catch(e){}
+            // return false;
             break;
           case "93":
           default:

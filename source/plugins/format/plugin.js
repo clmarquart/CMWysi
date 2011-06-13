@@ -11,7 +11,7 @@
       		value:"font-family:serif;",
       	}
       },
-      controls:["justifyLeft","justifyCenter","justifyFull","justifyRight","outdent","indent","fontname"],
+      controls:["justifyLeft","justifyCenter","justifyFull","justifyRight","outdent","indent","fontname","insertOrderedList","insertUnorderedList"],
       _load:function(method,ed){
           var cntrl={};
           switch (method) {
@@ -21,42 +21,56 @@
                        "class":"sprite",
                        "css":"background-position:-59px -17px"
                       }, ed);
-              break
+              break;
             case "justifyCenter" :
               cntrl = wysiwyg.Controls.createButton(method,{
                        "icon":"",
                        "class":"sprite",
                        "css":"background-position:-21px -17px"
                       }, ed);
-              break
+              break;
             case "justifyFull" :
               cntrl = wysiwyg.Controls.createButton(method,{
                        "icon":"",
                        "class":"sprite",
                        "css":"background-position:-59px -17px"
                       }, ed);
-              break
+              break;
             case "justifyRight" :
               cntrl = wysiwyg.Controls.createButton(method,{
                        "icon":"",
                        "class":"sprite",
                        "css":"background-position:-38px -17px"
                       }, ed);
-              break
+              break;
             case "indent" :
               cntrl = wysiwyg.Controls.createButton(method,{
                        "icon":"",
                        "class":"sprite",
                        "css":"background-position:-96px -17px"
                       }, ed);
-              break
+              break;
             case "outdent" :
               cntrl = wysiwyg.Controls.createButton(method,{
                        "icon":"",
                        "class":"sprite",
                        "css":"background-position:-79px -17px"
                       }, ed);
-              break
+              break;
+						case "insertOrderedList" :
+							cntrl = wysiwyg.Controls.createButton(method,{
+												"icon":"",
+												"class":"sprite",
+												"css":"background-position: -754px 0"
+											}, ed);
+							break;
+						case "insertUnorderedList" :
+							cntrl = wysiwyg.Controls.createButton(method,{
+												"icon":"",
+												"class":"sprite",
+												"css":"background-position: -738px 0"
+											}, ed);
+							break;
             case "fontname" :
               cntrl = wysiwyg.Controls.createDropDown(method,{id:"fontname_drop",
                                                 title:"Select Font",
